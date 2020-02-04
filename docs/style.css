@@ -6,8 +6,21 @@ Names:  Anika Padwekar
         McKinnon Williams
         Nicole Garakanidze
 */
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
 
 body {
-    background-color: #212121;
-    color: #ffffff;
+    background-color: #222222;
+    color: #666666;
+    font-family: 'Playfair Display', serif;
+    margin: 80px;
+}
+
+h1 {
+    color: #d1d1d1;
+    margin-bottom: 40px;
+}
+
+footer {
+    font-size: 12px;
+    margin-top: 40px;
 }
