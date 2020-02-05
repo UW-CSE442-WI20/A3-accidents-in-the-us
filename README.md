@@ -1,5 +1,3 @@
-
-
 # A3 Starter template
 
 The starter code for creating interactive visualization prototypes.
