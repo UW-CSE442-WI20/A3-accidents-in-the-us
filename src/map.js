@@ -5,6 +5,8 @@ Names:  Anika Padwekar
         Kwing Li
         McKinnon Williams
         Nicole Garakanidze
+
+Sources: https://www.youtube.com/watch?v=G-VggTK-Wlg
 */
 
 var d3 = require('d3');
