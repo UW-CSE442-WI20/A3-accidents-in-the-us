@@ -30,11 +30,8 @@ var path = d3.geoPath()
 
 
 var promises = [
-
-    // State topology from: https://github.com/topojson/us-atlas
-    // d3.json('https://raw.githubusercontent.com/UW-CSE442-WI20/A3-accidents-in-the-us/master/src/us.json'),
-    //d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json'),
-    d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json'),
+    //  d3.json('https://d3js.org/us-10m.v1.json'),
+    d3.json('https://raw.githubusercontent.com/UW-CSE442-WI20/A3-accidents-in-the-us/master/src/us.json'),
     d3.csv('https://raw.githubusercontent.com/UW-CSE442-WI20/A3-accidents-in-the-us/master/data/general_cords.csv')
 ];
 

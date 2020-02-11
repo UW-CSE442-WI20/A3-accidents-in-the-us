@@ -28904,10 +28904,8 @@ var svg = d3.select('body').append('svg').attr('width', width).attr('height', he
 var g = svg.append('g');
 var projection = d3.geoAlbersUsa().translate([width / 2, height / 2]).scale(1000);
 var path = d3.geoPath().projection(projection);
-var promises = [// State topology from: https://github.com/topojson/us-atlas
-// d3.json('https://raw.githubusercontent.com/UW-CSE442-WI20/A3-accidents-in-the-us/master/src/us.json'),
-//d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json'),
-d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json'), d3.csv('https://raw.githubusercontent.com/UW-CSE442-WI20/A3-accidents-in-the-us/master/data/general_cords.csv')];
+var promises = [//  d3.json('https://d3js.org/us-10m.v1.json'),
+d3.json('https://raw.githubusercontent.com/UW-CSE442-WI20/A3-accidents-in-the-us/master/src/us.json'), d3.csv('https://raw.githubusercontent.com/UW-CSE442-WI20/A3-accidents-in-the-us/master/data/general_cords.csv')];
 Promise.all(promises).then(ready);
 
 function ready(data) {
@@ -28944,7 +28942,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63358" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53910" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
