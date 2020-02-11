@@ -24,3 +24,12 @@ footer {
     font-size: 12px;
     margin-top: 40px;
 }
+
+.state {
+    background-color: #ffffff;
+    fill: #ffffff;
+    stroke: #333333;
+    stroke-width: 0.5;
+}
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */
