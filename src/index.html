@@ -5,10 +5,10 @@ Names:  Anika Padwekar
         Kwing Li
         McKinnon Williams
         Nicole Garakanidze
--->
+    -->
 
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>Accidents in the US</title>
@@ -20,24 +20,104 @@ Names:  Anika Padwekar
     <body>
         <script src="http://d3js.org/topojson.v1.min.js"></script>
         <script src="//d3js.org/d3.v3.min.js"></script>
-       
+
         <script src="map.js"></script>
 
-        <h1>Accidents in the US</h1>
-        <p>
-            A rationale for your design decisions. How did you choose your particular visual encodings and interaction
-            techniques? What alternatives did you consider and how did you arrive at your ultimate choices?
-        </p>
-        <p>
-            An overview of your development process. Describe how the work was split among the team members. Include a
-            commentary on the development process, including answers to the following questions: Roughly how much time
-            did you spend developing your application (in people-hours)? What aspects took the most time?
-        </p>
+        <!-- Start of the slider -->
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://unpkg.com/d3-simple-slider"></script>
 
-    </body>
 
-    <footer>
-        All images and text on this site &copy; 2020 Anika Padwekar, Kwing Li, McKinnon Williams, Nicole Garakanidze
-    </footer>
+        <div class="container">
+            <h6>Hour</h6>
+            <div class="row align-items-center">
+              <div class="col-sm-2"><p id="value-step"></p></div>
+              <div class="col-sm"><div id="slider-step"></div></div>
+          </div> 
+          <h6>Temperature</h6>
+          <div class="row align-items-center">
+              <div class="col-sm-2"><p id="value-step2"></p></div>
+              <div class="col-sm"><div id="slider-step2"></div></div>
+          </div> 
+      </div>
+
+      <h1>Accidents in the US</h1>
+      <p>
+        A rationale for your design decisions. How did you choose your particular visual encodings and interaction
+        techniques? What alternatives did you consider and how did you arrive at your ultimate choices?
+    </p>
+    <p>
+        An overview of your development process. Describe how the work was split among the team members. Include a
+        commentary on the development process, including answers to the following questions: Roughly how much time
+        did you spend developing your application (in people-hours)? What aspects took the most time?
+    </p>
+
+    <script>
+    // Hours
+    var hour = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
+
+
+    var sliderStep = d3
+    .sliderBottom()
+    .min(d3.min(hour))
+    .max(d3.max(hour))
+    .width(300)
+    .tickFormat(d3.format(''))
+    .ticks(12)
+    .step(1)
+    .default(12)
+    .on('onchange', val => {
+      d3.select('p#value-step').text(d3.format('')(val));
+  });
+
+    var gStep = d3
+    .select('div#slider-step')
+    .append('svg')
+    .attr('width', 500)
+    .attr('height', 100)
+    .append('g')
+    .attr('transform', 'translate(30,30)');
+
+    gStep.call(sliderStep);
+
+    d3.select('p#value-step').text(d3.format('')(sliderStep.value()));
+
+
+    var Temperature = [0, 100];
+
+
+    var sliderStep2 = d3
+    .sliderBottom()
+    .min(d3.min(Temperature))
+    .max(d3.max(Temperature))
+    .width(300)
+    .tickFormat(d3.format(''))
+    .ticks(20)
+    .step(10)
+    .default(60)
+    .on('onchange', val => {
+      d3.select('p#value-step2').text(d3.format('')(val));
+  });
+
+    var gStep2 = d3
+    .select('div#slider-step2')
+    .append('svg')
+    .attr('width', 500)
+    .attr('height', 100)
+    .append('g')
+    .attr('transform', 'translate(30,30)');
+
+    gStep2.call(sliderStep2);
+
+    d3.select('p#value-step2').text(d3.format('')(sliderStep2.value()));
+
+</script>
+
+
+</body>
+
+<footer>
+    All images and text on this site &copy; 2020 Anika Padwekar, Kwing Li, McKinnon Williams, Nicole Garakanidze
+</footer>
 
 </html>
