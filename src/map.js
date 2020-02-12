@@ -49,7 +49,5 @@ function ready(data) {
         .enter()
         .append('path')
         .attr('class', 'states')
-        .attr('d', path)
-        .attr('fill', 'White')
-        .attr('stroke', 'black');
+        .attr('d', path);
 }

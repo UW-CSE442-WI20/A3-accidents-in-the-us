@@ -26,7 +26,7 @@ footer {
 }
 
 .states {
-    fill: #ffffff;
-    stroke: #333333;
+    fill: rgba(0,0,0,0);
+    stroke: #d1d1d1;
     stroke-width: 0.5;
 }
