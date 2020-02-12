@@ -117,79 +117,31 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+})({"slider.js":[function(require,module,exports) {
+/*
+CSE 442: Data Visualization
+Assignment 3: Interactive Visualization
+Names:  Anika Padwekar
+        Kwing Li
+        McKinnon Williams
+        Nicole Garakanidze
+*/
+// Hours
+var hour = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+var sliderStep = d3.sliderBottom().min(d3.min(hour)).max(d3.max(hour)).width(300).tickFormat(d3.format('')).ticks(12).step(1).default(12).on('onchange', function (val) {
+  d3.select('p#value-step').text(d3.format('')(val));
+});
+var gStep = d3.select('div#slider-step').append('svg').attr('width', 500).attr('height', 100).append('g').attr('transform', 'translate(30,30)');
+gStep.call(sliderStep);
+d3.select('p#value-step').text(d3.format('')(sliderStep.value()));
+var Temperature = [0, 100];
+var sliderStep2 = d3.sliderBottom().min(d3.min(Temperature)).max(d3.max(Temperature)).width(300).tickFormat(d3.format('')).ticks(20).step(10).default(60).on('onchange', function (val) {
+  d3.select('p#value-step2').text(d3.format('')(val));
+});
+var gStep2 = d3.select('div#slider-step2').append('svg').attr('width', 500).attr('height', 100).append('g').attr('transform', 'translate(30,30)');
+gStep2.call(sliderStep2);
+d3.select('p#value-step2').text(d3.format('')(sliderStep2.value()));
+},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -393,5 +345,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/style.e308ff8e.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","slider.js"], null)
+//# sourceMappingURL=/slider.ab09d017.js.map

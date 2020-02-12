@@ -59,7 +59,7 @@ function ready(data) {
         .enter()
         .append('path')
         .attr('d', path)
-        .attr('class', 'state');
+        .attr('class', 'states');
     
     var counties = topojson.feature(data[0], data[0].objects.counties).features;
     var filtered = counties.filter(function(d){

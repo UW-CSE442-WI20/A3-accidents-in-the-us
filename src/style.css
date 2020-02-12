@@ -48,7 +48,7 @@ svg {
 }
 
 .states {
-    fill: rgba(0,0,0,0);
+    fill: #ffffff;
     stroke: #d1d1d1;
     stroke-width: 0.5;
 }
