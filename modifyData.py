@@ -21,7 +21,7 @@ for index, row in data.iterrows():
 data['General_Time'] = times
 data.to_csv("test_time.csv")'''
 
-data = pd.read_csv("data/test_time.csv")
+'''data = pd.read_csv("data/test_time.csv")
 lats = []
 longs = []
 for index, row in data.iterrows():
@@ -31,5 +31,19 @@ for index, row in data.iterrows():
 
 data['General_Lat'] = lats
 data['General_Lng'] = longs
-data.to_csv("general_cords.csv")
+data.to_csv("general_cords.csv")'''
 
+def myround(x, base=5):
+    return base * round(x/base)
+
+data = pd.read_csv("data/WA_Core_Info.csv")
+data = data.dropna(subset=['General_Tmp'])
+
+temps = []
+for index, row in data.iterrows():
+    temps.append(myround(float(row['General_Tmp'])))
+
+
+data['Temperature'] = temps
+data = data[['Severity', 'Temperature', 'General_Time', 'General_Lat' ,'General_Lng']]
+data.to_csv("WA.csv")

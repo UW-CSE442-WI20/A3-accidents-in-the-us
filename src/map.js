@@ -32,7 +32,7 @@ var path = d3.geoPath()
 var promises = [
     //  d3.json('https://d3js.org/us-10m.v1.json'),
     d3.json('https://raw.githubusercontent.com/UW-CSE442-WI20/A3-accidents-in-the-us/master/src/us.json'),
-    d3.csv('https://raw.githubusercontent.com/UW-CSE442-WI20/A3-accidents-in-the-us/master/data/general_cords.csv')
+    d3.csv('https://raw.githubusercontent.com/UW-CSE442-WI20/A3-accidents-in-the-us/master/src/WA.csv')
 ];
 
 Promise.all(promises).then(ready);
@@ -73,4 +73,44 @@ function ready(data) {
         .attr('d', path)
         .attr('fill', 'none')
         .attr('stroke', 'black');
+}
+
+const csvData = require('./WA.csv');
+
+// Gets data and compares it to temp and hour value
+d3.csv(csvData).then(function(data) {
+    data.forEach(function(d) {
+            d.Severity = +d.Severity;
+            d.General_Lat = ((+d.General_Lat - 45.6) * 100) + 100;
+            d.General_Lng = ((+d.General_Lng + 123.6) * 100) + 230;
+            d.General_Time = +d.General_Time;
+            d.Temperature = +d.Temperature;
+        }
+    );
+    draw_data(data.filter(function(row){
+        return row.Temperature == 60
+    }));
+});
+
+function draw_data(data){
+
+    console.log(data)
+
+    var circles = svg.selectAll("circle")
+        .data(data)
+        .enter()
+        .append("circle");
+
+    var circleAttributes = circles
+        .attr("cy", function (data) { return data.General_Lat; })
+        .attr("cx", function (data) { return data.General_Lng; })
+        .attr("r", 4 )
+        .style("fill", function(data) {
+            var returnColor;
+            if (data.Severity === 2) { returnColor = "blue";
+            } else if (data.Severity === 3) { returnColor = "green";
+            } else if (data.Severity === 4) { returnColor = "red"; }
+            return returnColor;
+        });
+
 }
