@@ -5,7 +5,6 @@ Names:  Anika Padwekar
         Kwing Li
         McKinnon Williams
         Nicole Garakanidze
-
 Sources:    https://www.youtube.com/watch?v=G-VggTK-Wlg
             https://bl.ocks.org/adamjanes/6cf85a4fd79e122695ebde7d41fe327f
 */
@@ -22,7 +21,9 @@ var svg = d3.select('body')
 
 var g = svg.append('g');
 
-var projection = d3.geoAlbersUsa()
+var projection = d3.geoConicConformal()
+    .parallels([47 + 30 / 60, 48 + 44 / 60])
+    .rotate([120 + 50 / 60, 0])
     .scale(1000);
 
 var path = d3.geoPath()
@@ -42,7 +43,7 @@ function ready(data) {
 
     var states = topojson.feature(data[0], data[0].objects.states).features;
     var state = states.filter(function(d) { return d.id === 53; });
- 
+
     projection.scale(1).translate([0, 0]);
 
     // Book: Learning D3.js 4 Mapping Second Edition
@@ -50,7 +51,7 @@ function ready(data) {
     var b = path.bounds(state[0]);
     var s = 0.95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
     var t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
- 
+
     projection.scale(s).translate(t);
 
     g.append('g')
@@ -60,7 +61,7 @@ function ready(data) {
         .append('path')
         .attr('d', path)
         .attr('class', 'states');
-    
+
     var counties = topojson.feature(data[0], data[0].objects.counties).features;
     var filtered = counties.filter(function(d){
         return Math.floor(d.id/1000) == 53;
@@ -81,15 +82,16 @@ const csvData = require('./WA.csv');
 d3.csv(csvData).then(function(data) {
     data.forEach(function(d) {
             d.Severity = +d.Severity;
-            d.General_Lat = ((+d.General_Lat - 45.6) * 100) + 100;
-            d.General_Lng = ((+d.General_Lng + 123.6) * 100) + 230;
+            d.General_Lat = ((+d.General_Lat - 45.6) * 120) + 27;
+            d.General_Lng = ((+d.General_Lng + 123.6) * 80) + 310;
             d.General_Time = +d.General_Time;
             d.Temperature = +d.Temperature;
         }
     );
-    draw_data(data.filter(function(row){
+    draw_data(data);
+    /*draw_data(data.filter(function(row){
         return row.Temperature == 60
-    }));
+    }));*/
 });
 
 function draw_data(data){
