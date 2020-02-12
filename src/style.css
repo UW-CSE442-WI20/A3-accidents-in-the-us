@@ -17,7 +17,7 @@ body {
 
 h1 {
     color: #d1d1d1;
-    margin-bottom: 40px;
+    margin: 25px;
 }
 
 footer {
@@ -29,6 +29,10 @@ footer {
 svg {
     display: flex;
     margin: auto;
+}
+
+p {
+    text-indent: 30px;
 }
 
 .flex-container {
