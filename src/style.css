@@ -13,6 +13,7 @@ body {
     color: #666666;
     font-family: 'Playfair Display', serif;
     margin: 80px;
+    align-content: center;
 }
 
 h1 {
@@ -25,9 +26,29 @@ footer {
     margin-top: 40px;
 }
 
-.state {
-    background-color: #ffffff;
-    fill: #ffffff;
-    stroke: #333333;
+svg {
+    display: flex;
+    margin: auto;
+}
+
+.flex-container {
+    /*
+    border: 1px #ccc solid;
+    */
+    display: flex;
+    justify-content: center;
+}
+
+.sliders {
+    flex: 1;
+}
+
+.text {
+    flex: 2;
+}
+
+.states {
+    fill: rgba(0,0,0,0);
+    stroke: #d1d1d1;
     stroke-width: 0.5;
 }
