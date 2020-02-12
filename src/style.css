@@ -13,7 +13,6 @@ body {
     color: #666666;
     font-family: 'Playfair Display', serif;
     margin: 80px;
-    align-content: center;
 }
 
 h1 {
@@ -24,6 +23,7 @@ h1 {
 footer {
     font-size: 12px;
     margin-top: 40px;
+    text-align: right;
 }
 
 svg {
@@ -37,6 +37,7 @@ svg {
     */
     display: flex;
     justify-content: center;
+    margin-top: 80px;
 }
 
 .sliders {
@@ -48,7 +49,18 @@ svg {
 }
 
 .states {
-    fill: #ffffff;
+    fill: none;
     stroke: #d1d1d1;
-    stroke-width: 0.5;
+    stroke-width: 2.5;
+}
+
+.counties {
+    fill: none;
+    stroke: #d1d1d1;
+    stroke-width: 1.0;
+}
+
+.slider-sel {
+    font-size: 30px;
+    color: #d1d1d1;
 }

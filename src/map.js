@@ -72,8 +72,7 @@ function ready(data) {
         .enter()
         .append('path')
         .attr('d', path)
-        .attr('fill', 'none')
-        .attr('stroke', 'black');
+        .attr('class', 'counties');
 }
 
 const csvData = require('./WA.csv');
