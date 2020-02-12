@@ -13,6 +13,7 @@ body {
     color: #666666;
     font-family: 'Playfair Display', serif;
     margin: 80px;
+    align-content: center;
 }
 
 h1 {
@@ -23,6 +24,27 @@ h1 {
 footer {
     font-size: 12px;
     margin-top: 40px;
+}
+
+svg {
+    display: flex;
+    margin: auto;
+}
+
+.flex-container {
+    /*
+    border: 1px #ccc solid;
+    */
+    display: flex;
+    justify-content: center;
+}
+
+.sliders {
+    flex: 1;
+}
+
+.text {
+    flex: 2;
 }
 
 .states {

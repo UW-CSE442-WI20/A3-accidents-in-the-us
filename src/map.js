@@ -22,7 +22,6 @@ var svg = d3.select('body')
 var g = svg.append('g');
 
 var projection = d3.geoAlbersUsa()
-    .translate([width / 2, height / 2])
     .scale(1000);
 
 var path = d3.geoPath()
