@@ -14,6 +14,7 @@ var d3 = require('d3');
 
 var width = 1000;
 var height = 500;
+
 var svg = d3.select('body')
     .append('svg')
     .attr('width', width)
@@ -41,15 +42,36 @@ function ready(data) {
     console.log(data);
 
     var states = topojson.feature(data[0], data[0].objects.states).features;
-    console.log(states);
+    var state = states.filter(function(d) { return d.id === 53; });
+ 
+    projection.scale(1).translate([0, 0]);
+
+    // Book: Learning D3.js 4 Mapping Second Edition
+    //  By: Thomas Newton, Oscar Villarreal, Lars Verspohl
+    var b = path.bounds(state[0]);
+    var s = 0.95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
+    var t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+ 
+    projection.scale(s).translate(t);
 
     g.append('g')
-        .selectAll('class','states')
-        .data(states)
+        .selectAll('class','state')
+        .data(state)
         .enter()
         .append('path')
-        .attr('class', 'states')
         .attr('d', path)
-        .attr('fill', 'White')
+        .attr('class', 'state');
+    
+    var counties = topojson.feature(data[0], data[0].objects.counties).features;
+    var filtered = counties.filter(function(d){
+        return Math.floor(d.id/1000) == 53;
+    });
+    g.append('g')
+        .selectAll('class', 'counties')
+        .data(filtered)
+        .enter()
+        .append('path')
+        .attr('d', path)
+        .attr('fill', 'none')
         .attr('stroke', 'black');
 }

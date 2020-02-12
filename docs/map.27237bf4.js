@@ -28911,8 +28911,20 @@ Promise.all(promises).then(ready);
 function ready(data) {
   console.log(data);
   var states = topojson.feature(data[0], data[0].objects.states).features;
-  console.log(states);
-  g.append('g').selectAll('class', 'states').data(states).enter().append('path').attr('class', 'states').attr('d', path).attr('fill', 'White').attr('stroke', 'black');
+  var state = states.filter(function (d) {
+    return d.id === 53;
+  });
+  projection.scale(1).translate([0, 0]);
+  var b = path.bounds(state[0]);
+  var s = 0.95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
+  var t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+  projection.scale(s).translate(t);
+  g.append('g').selectAll('class', 'state').data(state).enter().append('path').attr('d', path).attr('class', 'state');
+  var counties = topojson.feature(data[0], data[0].objects.counties).features;
+  var filtered = counties.filter(function (d) {
+    return Math.floor(d.id / 1000) == 53;
+  });
+  g.append('g').selectAll('class', 'counties').data(filtered).enter().append('path').attr('d', path).attr('fill', 'none').attr('stroke', 'black');
 }
 },{"d3":"../node_modules/d3/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -28942,7 +28954,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53910" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62729" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
