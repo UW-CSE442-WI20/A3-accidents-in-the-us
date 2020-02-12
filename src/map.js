@@ -38,10 +38,10 @@ var promises = [
 Promise.all(promises).then(ready);
 
 function ready(data) {
-    console.log(data);
+    // console.log(data);
 
     var states = topojson.feature(data[0], data[0].objects.states).features;
-    console.log(states);
+    // console.log(states);
 
     g.append('g')
         .selectAll('class','states')
