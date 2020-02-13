@@ -106,9 +106,9 @@ function draw_data(data){
         .attr("r", 4 )
         .style("fill", function(data) {
             var returnColor;
-            if (data.Severity === 2) { returnColor = "blue";
-            } else if (data.Severity === 3) { returnColor = "green";
-            } else if (data.Severity === 4) { returnColor = "red"; }
+            if (data.Severity === 2) { returnColor = "salmon";
+            } else if (data.Severity === 3) { returnColor = "indianred";
+            } else if (data.Severity === 4) { returnColor = "firebrick"; }
             return returnColor;
         });
 
