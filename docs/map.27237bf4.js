@@ -28884,7 +28884,9 @@ Object.keys(_d3Zoom).forEach(function (key) {
     }
   });
 });
-},{"./dist/package.js":"../node_modules/d3/dist/package.js","d3-array":"../node_modules/d3-array/src/index.js","d3-axis":"../node_modules/d3-axis/src/index.js","d3-brush":"../node_modules/d3-brush/src/index.js","d3-chord":"../node_modules/d3-chord/src/index.js","d3-collection":"../node_modules/d3-collection/src/index.js","d3-color":"../node_modules/d3-color/src/index.js","d3-contour":"../node_modules/d3-contour/src/index.js","d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-drag":"../node_modules/d3-drag/src/index.js","d3-dsv":"../node_modules/d3-dsv/src/index.js","d3-ease":"../node_modules/d3-ease/src/index.js","d3-fetch":"../node_modules/d3-fetch/src/index.js","d3-force":"../node_modules/d3-force/src/index.js","d3-format":"../node_modules/d3-format/src/index.js","d3-geo":"../node_modules/d3-geo/src/index.js","d3-hierarchy":"../node_modules/d3-hierarchy/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","d3-path":"../node_modules/d3-path/src/index.js","d3-polygon":"../node_modules/d3-polygon/src/index.js","d3-quadtree":"../node_modules/d3-quadtree/src/index.js","d3-random":"../node_modules/d3-random/src/index.js","d3-scale":"../node_modules/d3-scale/src/index.js","d3-scale-chromatic":"../node_modules/d3-scale-chromatic/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","d3-shape":"../node_modules/d3-shape/src/index.js","d3-time":"../node_modules/d3-time/src/index.js","d3-time-format":"../node_modules/d3-time-format/src/index.js","d3-timer":"../node_modules/d3-timer/src/index.js","d3-transition":"../node_modules/d3-transition/src/index.js","d3-voronoi":"../node_modules/d3-voronoi/src/index.js","d3-zoom":"../node_modules/d3-zoom/src/index.js"}],"map.js":[function(require,module,exports) {
+},{"./dist/package.js":"../node_modules/d3/dist/package.js","d3-array":"../node_modules/d3-array/src/index.js","d3-axis":"../node_modules/d3-axis/src/index.js","d3-brush":"../node_modules/d3-brush/src/index.js","d3-chord":"../node_modules/d3-chord/src/index.js","d3-collection":"../node_modules/d3-collection/src/index.js","d3-color":"../node_modules/d3-color/src/index.js","d3-contour":"../node_modules/d3-contour/src/index.js","d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-drag":"../node_modules/d3-drag/src/index.js","d3-dsv":"../node_modules/d3-dsv/src/index.js","d3-ease":"../node_modules/d3-ease/src/index.js","d3-fetch":"../node_modules/d3-fetch/src/index.js","d3-force":"../node_modules/d3-force/src/index.js","d3-format":"../node_modules/d3-format/src/index.js","d3-geo":"../node_modules/d3-geo/src/index.js","d3-hierarchy":"../node_modules/d3-hierarchy/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","d3-path":"../node_modules/d3-path/src/index.js","d3-polygon":"../node_modules/d3-polygon/src/index.js","d3-quadtree":"../node_modules/d3-quadtree/src/index.js","d3-random":"../node_modules/d3-random/src/index.js","d3-scale":"../node_modules/d3-scale/src/index.js","d3-scale-chromatic":"../node_modules/d3-scale-chromatic/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","d3-shape":"../node_modules/d3-shape/src/index.js","d3-time":"../node_modules/d3-time/src/index.js","d3-time-format":"../node_modules/d3-time-format/src/index.js","d3-timer":"../node_modules/d3-timer/src/index.js","d3-transition":"../node_modules/d3-transition/src/index.js","d3-voronoi":"../node_modules/d3-voronoi/src/index.js","d3-zoom":"../node_modules/d3-zoom/src/index.js"}],"WA.csv":[function(require,module,exports) {
+module.exports = "/WA.44ae0e56.csv";
+},{}],"map.js":[function(require,module,exports) {
 /*
 CSE 442: Data Visualization
 Assignment 3: Interactive Visualization
@@ -28892,7 +28894,6 @@ Names:  Anika Padwekar
         Kwing Li
         McKinnon Williams
         Nicole Garakanidze
-
 Sources:    https://www.youtube.com/watch?v=G-VggTK-Wlg
             https://bl.ocks.org/adamjanes/6cf85a4fd79e122695ebde7d41fe327f
 */
@@ -28902,10 +28903,10 @@ var width = 1000;
 var height = 500;
 var svg = d3.select('body').append('svg').attr('width', width).attr('height', height);
 var g = svg.append('g');
-var projection = d3.geoAlbersUsa().scale(1000);
+var projection = d3.geoConicConformal().parallels([47 + 30 / 60, 48 + 44 / 60]).rotate([120 + 50 / 60, 0]).scale(1000);
 var path = d3.geoPath().projection(projection);
 var promises = [//  d3.json('https://d3js.org/us-10m.v1.json'),
-d3.json('https://raw.githubusercontent.com/UW-CSE442-WI20/A3-accidents-in-the-us/master/src/us.json'), d3.csv('https://raw.githubusercontent.com/UW-CSE442-WI20/A3-accidents-in-the-us/master/data/general_cords.csv')];
+d3.json('https://raw.githubusercontent.com/UW-CSE442-WI20/A3-accidents-in-the-us/master/src/us.json'), d3.csv('https://raw.githubusercontent.com/UW-CSE442-WI20/A3-accidents-in-the-us/master/src/WA.csv')];
 Promise.all(promises).then(ready);
 
 function ready(data) {
@@ -28926,9 +28927,72 @@ function ready(data) {
   var filtered = counties.filter(function (d) {
     return Math.floor(d.id / 1000) == 53;
   });
-  g.append('g').selectAll('class', 'counties').data(filtered).enter().append('path').attr('d', path).attr('fill', 'none').attr('stroke', 'black');
+  g.append('g').selectAll('class', 'counties').data(filtered).enter().append('path').attr('d', path).attr('class', 'counties');
 }
-},{"d3":"../node_modules/d3/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+var csvData = require('./WA.csv'); // Gets data and compares it to temp and hour value
+
+
+d3.csv(csvData).then(function (data) {
+  data.forEach(function (d) {
+    d.Severity = +d.Severity;
+    d.General_Lat = (+d.General_Lat - 45.6) * 120 + 27;
+    d.General_Lng = (+d.General_Lng + 123.6) * 80 + 310;
+    d.General_Time = +d.General_Time;
+    d.Temperature = +d.Temperature;
+  });
+  draw_data(data);
+});
+
+function draw_data(data) {
+  console.log(data);
+  d3.selectAll("circle").remove();
+  var circles = svg.selectAll("circle").data(data).enter().append("circle");
+  var circleAttributes = circles.attr("cy", function (data) {
+    return data.General_Lat;
+  }).attr("cx", function (data) {
+    return data.General_Lng;
+  }).attr("r", 4).style("fill", function (data) {
+    var returnColor;
+
+    if (data.Severity === 2) {
+      returnColor = "yellow";
+    } else if (data.Severity === 3) {
+      returnColor = "orange";
+    } else if (data.Severity === 4) {
+      returnColor = "red";
+    }
+
+    return returnColor;
+  });
+} // Update data from a now selected temperature and hour
+
+
+function updateData(desired_temp, desired_hour) {
+  // Gets data and compares it to temp and hour value
+  console.log(desired_temp);
+  console.log(desired_hour);
+  d3.csv(csvData).then(function (data) {
+    data.forEach(function (d) {
+      d.Severity = +d.Severity;
+      d.General_Lat = (+d.General_Lat - 45.6) * 120 + 27;
+      d.General_Lng = (+d.General_Lng + 123.6) * 80 + 310;
+      d.General_Time = +d.General_Time;
+      d.Temperature = +d.Temperature;
+    });
+
+    if (desired_hour == 25 && desired_temp == 105) {
+      draw_data(data);
+    } else {
+      draw_data(data.filter(function (row) {
+        return row.Temperature == desired_temp && row.General_Time == desired_hour;
+      }));
+    }
+  });
+}
+
+window.updateData = updateData;
+},{"d3":"../node_modules/d3/index.js","./WA.csv":"WA.csv"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -28956,7 +29020,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53281" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56164" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

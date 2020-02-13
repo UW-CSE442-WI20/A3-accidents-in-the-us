@@ -138,5 +138,3 @@ function updateData(desired_temp, desired_hour) {
     });
 }
 window.updateData = updateData;
-
-
