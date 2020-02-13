@@ -13,22 +13,50 @@ body {
     color: #666666;
     font-family: 'Playfair Display', serif;
     margin: 80px;
-    align-content: center;
 }
 
 h1 {
     color: #d1d1d1;
-    margin-bottom: 40px;
+    margin: 25px;
+}
+
+h2 {
+    color: #d1d1d1;
+    margin: 20px;
 }
 
 footer {
     font-size: 12px;
     margin-top: 40px;
+    text-align: right;
 }
 
 svg {
     display: flex;
     margin: auto;
+}
+
+p {
+    text-indent: 30px;
+    line-height: 1.5;
+}
+
+li {
+    margin-bottom: 15px;
+}
+
+a:link {
+    color: #888888;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #888888;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #d1d1d1;
 }
 
 .flex-container {
@@ -37,6 +65,12 @@ svg {
     */
     display: flex;
     justify-content: center;
+    margin-top: 80px;
+}
+
+.flex-container-2 {
+    display: flex;
+    flex-direction: column;
 }
 
 .sliders {
@@ -48,9 +82,21 @@ svg {
 }
 
 .states {
-    fill: #ffffff;
+    fill: none;
     stroke: #d1d1d1;
-    stroke-width: 0.5;
+    stroke-width: 2.5;
 }
+
+.counties {
+    fill: none;
+    stroke: #d1d1d1;
+    stroke-width: 1.0;
+}
+
+.slider-sel {
+    font-size: 30px;
+    color: #d1d1d1;
+}
+
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */

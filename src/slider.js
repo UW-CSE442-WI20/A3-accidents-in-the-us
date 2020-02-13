@@ -15,7 +15,7 @@ var TimeSlider = d3
     .sliderBottom()
     .min(d3.min(hour))
     .max(d3.max(hour))
-    .width(300)
+    .width(400)
     .tickFormat(d3.format(''))
     .ticks(12)
     .step(1)
@@ -32,7 +32,9 @@ var gTimeStep = d3
     .attr('width', 500)
     .attr('height', 100)
     .append('g')
-    .attr('transform', 'translate(30,30)');
+    .attr('transform', 'translate(30,30)')
+    .attr('fill', 'red')
+    .attr('font-size', '40px');
 
 gTimeStep.call(TimeSlider);
 
@@ -44,7 +46,7 @@ var TempSlider = d3
     .sliderBottom()
     .min(d3.min(Temperature))
     .max(d3.max(Temperature))
-    .width(300)
+    .width(400)
     .tickFormat(d3.format(''))
     .ticks(20)
     .step(10)
@@ -61,7 +63,7 @@ var gTempStep = d3
     .attr('width', 500)
     .attr('height', 100)
     .append('g')
-    .attr('transform', 'translate(30,30)');
+    .attr('transform', 'translate(30,30)')
+    .attr('fill', 'red');
 
 gTempStep.call(TempSlider);
-
