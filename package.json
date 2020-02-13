@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html; rm -rf docs; mv dist docs;",
+    "build": "parcel build src/index.html --public-url https://uw-cse442-wi20.github.io/A3-accidents-in-the-us; rm -rf docs; mv dist docs;",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "devDependencies": {
+    "gh-pages": "^2.2.0",
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
