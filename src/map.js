@@ -23,7 +23,7 @@ var g = svg.append('g');
 
 var projection = d3.geoConicConformal()
     .parallels([47 + 30 / 60, 48 + 44 / 60])
-    .rotate([120 + 50 / 60, 0])
+    .rotate([120 + 0 / 60, 0])
     .scale(1000);
 
 var path = d3.geoPath()
@@ -81,7 +81,7 @@ const csvData = require('./WA.csv');
 d3.csv(csvData).then(function(data) {
     data.forEach(function(d) {
             d.Severity = +d.Severity;
-            d.Latitude = ((+d.Latitude - 45.6) * 120) + 27;
+            d.Latitude = ((+d.Latitude - 45.6) * 125) + 37;
             d.Longitude = ((+d.Longitude + 123.6) * 80) + 310;
             d.General_Time = +d.General_Time;
             d.Temperature = +d.Temperature;
@@ -122,8 +122,8 @@ function updateData(desired_temp, desired_hour) {
     d3.csv(csvData).then(function (data) {
         data.forEach(function (d) {
                 d.Severity = +d.Severity;
-                d.Latitude = ((+d.Latitude - 45.6) * 120) + 27;
-                d.Longitude = ((+d.Longitude + 123.6) * 80) + 310;
+                d.Latitude = ((+d.Latitude - 45.6) * 90) + 27;
+                d.Longitude = ((+d.Longitude + 123.6) * 65) + 280;
                 d.General_Time = +d.General_Time;
                 d.Temperature = +d.Temperature;
             }
