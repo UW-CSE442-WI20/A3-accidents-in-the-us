@@ -33,6 +33,25 @@ svg {
 
 p {
     text-indent: 30px;
+    line-height: 1.5;
+}
+
+li {
+    margin: 10px;
+}
+
+a:link {
+    color: #888888;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #888888;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #d1d1d1;
 }
 
 .flex-container {
