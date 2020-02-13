@@ -52,13 +52,39 @@ Names:  Anika Padwekar
         </p>
         <h1>Write-Up</h1>
         <p>
-            A rationale for your design decisions. How did you choose your particular visual encodings and interaction
-            techniques? What alternatives did you consider and how did you arrive at your ultimate choices?
+                We were interested in the severity of accidents with the U.S. Initially we started out with a dataset that
+            contained accidents within all U.S. states. The first part of the process included all team members exploring
+            the dataset. In exploring the dataset, we found visualizations with geographical mapping to be particularly 
+            effective in exploring trends within states and counties. For example, trends in severity between eastern or
+            western regions or different geographical locations can easily be seen on a map versus a bar chart of states or 
+            counties. We eventually decided to narrow in the focus to Washington. We wanted to allow users to explore their 
+            own questions concerning how temperature and time played into the severity of the accident at the 
+            county level especially with a geographical region that people were familiar with. By narrowing down the 
+            region to Washington, user’s could see more specific information by county. For example, we noticed that
+            King’s County tends to have more accidents than other regions of Washington.
         </p>
         <p>
-            An overview of your development process. Describe how the work was split among the team members. Include a
-            commentary on the development process, including answers to the following questions: Roughly how much time
-            did you spend developing your application (in people-hours)? What aspects took the most time?
+                We used color to encode the severity of the accident. Here we decided to use yellow, orange, and red 
+            to indicate severity from 2 to 4 respectively. We decided color would be a good encoding of severity because
+            users already associate red with negativity, yellow with happiness, and orange as color in between. We thought
+            dots with different colors to indicate data points would be easier to distinguish rather than shape, orientation,
+            or other variables. While we thought size would be easy to distinguish different data points, we thought
+            varying the size would lead to too much overlap into data points and cluttering the visualization. Additionally,
+            we added sliders to fit our original intentions of having the users be able to explore their own questions by
+            being able to filter temperature and time. Because both temperature and time have a scale of values, we
+            thought a slider would be more appropriate than a radio button or selection. Additionally, we wanted to keep
+            temperature.
+        </p>
+        <p>
+                We all started by exploring the data and developing questions by using Tableau to visualize different
+            variables. Through this, we all decided on looking at the severity of accidents within Washington and that we
+            wanted users to be able to filter by time and temperature. By far the most time consuming parts, were being
+            able to display the map and being able to filter by time and temperature. McKinnon, Nicole, and Kwing
+            looked into the map visualization. Anika and McKinnon looked into filtering the data and adding sliders.
+            Kwing and Anika looked into changing the formatting (font, color, aesthetics). Anika did the write-up. Each
+            member of the team spent around 8-10 hours individually creating the visualization much of this time was
+            spent in familiarizing ourselves with D3, JavaScript, and HTML.
+
         </p>
     </div>
 </div>

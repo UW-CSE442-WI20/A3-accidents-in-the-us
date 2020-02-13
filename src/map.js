@@ -107,7 +107,7 @@ function draw_data(data){
         .style("fill", function(data) {
             var returnColor;
             if (data.Severity === 2) { returnColor = "yellow";
-            } else if (data.Severity === 3) { returnColor = "orange";
+            } else if (data.Severity === 3) { returnColor = "darkorange";
             } else if (data.Severity === 4) { returnColor = "red"; }
             return returnColor;
         });
