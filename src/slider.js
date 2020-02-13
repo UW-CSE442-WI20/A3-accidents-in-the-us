@@ -9,7 +9,7 @@ Names:  Anika Padwekar
 
 // Hours
 var hour = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
-var time_select;
+var time_select = 16;
 
 var TimeSlider = d3
     .sliderBottom()
@@ -23,7 +23,8 @@ var TimeSlider = d3
     .on('onchange', val => {
         time_select = val;
         console.log(time_select);
-});
+        window.updateData(temp_select, time_select)
+    });
 
 var gTimeStep = d3
     .select('div#slider-step')
@@ -37,7 +38,7 @@ gTimeStep.call(TimeSlider);
 
 
 var Temperature = [0, 100];
-var temp_select;
+var temp_select = 65;
 
 var TempSlider = d3
     .sliderBottom()
@@ -51,6 +52,7 @@ var TempSlider = d3
     .on('onchange', val => {
         temp_select = val;
         console.log(temp_select);
+        window.updateData(temp_select, time_select)
     });
 
 var gTempStep = d3

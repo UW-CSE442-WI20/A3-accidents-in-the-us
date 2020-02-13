@@ -92,7 +92,8 @@ d3.csv(csvData).then(function(data) {
 
 function draw_data(data){
 
-    console.log(data)
+    console.log(data);
+    d3.selectAll("circle").remove();
 
     var circles = svg.selectAll("circle")
         .data(data)
@@ -116,6 +117,8 @@ function draw_data(data){
 // Update data from a now selected temperature and hour
 function updateData(desired_temp, desired_hour) {
 // Gets data and compares it to temp and hour value
+    console.log(desired_temp)
+    console.log(desired_hour)
     d3.csv(csvData).then(function (data) {
         data.forEach(function (d) {
                 d.Severity = +d.Severity;
@@ -134,5 +137,6 @@ function updateData(desired_temp, desired_hour) {
         }
     });
 }
+window.updateData = updateData;
 
 
