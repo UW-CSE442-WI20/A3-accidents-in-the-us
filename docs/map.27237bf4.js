@@ -28958,7 +28958,7 @@ function draw_data(data) {
     if (data.Severity === 2) {
       returnColor = "yellow";
     } else if (data.Severity === 3) {
-      returnColor = "orange";
+      returnColor = "darkorange";
     } else if (data.Severity === 4) {
       returnColor = "red";
     }
@@ -29020,7 +29020,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56164" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58517" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
