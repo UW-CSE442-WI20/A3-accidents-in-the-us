@@ -49,7 +49,7 @@ var TempSlider = d3
     .width(400)
     .tickFormat(d3.format(''))
     .ticks(20)
-    .step(10)
+    .step(5)
     .default(60)
     .on('onchange', val => {
         temp_select = val;

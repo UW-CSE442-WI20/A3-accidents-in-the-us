@@ -81,8 +81,8 @@ const csvData = require('./WA.csv');
 d3.csv(csvData).then(function(data) {
     data.forEach(function(d) {
             d.Severity = +d.Severity;
-            d.General_Lat = ((+d.General_Lat - 45.6) * 120) + 27;
-            d.General_Lng = ((+d.General_Lng + 123.6) * 80) + 310;
+            d.Latitude = ((+d.Latitude - 45.6) * 120) + 27;
+            d.Longitude = ((+d.Longitude + 123.6) * 80) + 310;
             d.General_Time = +d.General_Time;
             d.Temperature = +d.Temperature;
         }
@@ -101,8 +101,8 @@ function draw_data(data){
         .append("circle");
 
     var circleAttributes = circles
-        .attr("cy", function (data) { return data.General_Lat; })
-        .attr("cx", function (data) { return data.General_Lng; })
+        .attr("cy", function (data) { return data.Latitude; })
+        .attr("cx", function (data) { return data.Longitude; })
         .attr("r", 4 )
         .style("fill", function(data) {
             var returnColor;
@@ -122,13 +122,13 @@ function updateData(desired_temp, desired_hour) {
     d3.csv(csvData).then(function (data) {
         data.forEach(function (d) {
                 d.Severity = +d.Severity;
-                d.General_Lat = ((+d.General_Lat - 45.6) * 120) + 27;
-                d.General_Lng = ((+d.General_Lng + 123.6) * 80) + 310;
+                d.Latitude = ((+d.Latitude - 45.6) * 120) + 27;
+                d.Longitude = ((+d.Longitude + 123.6) * 80) + 310;
                 d.General_Time = +d.General_Time;
                 d.Temperature = +d.Temperature;
             }
         );
-        if (desired_hour == 25 && desired_temp == 105) {
+        if (desired_hour == 24 && desired_temp == 105) {
             draw_data(data);
         } else {
             draw_data(data.filter(function (row) {
